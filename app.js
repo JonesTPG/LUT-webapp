@@ -11,9 +11,9 @@ var catalogRouter = require('./routes/catalog');  //Import routes for "catalog" 
 var app = express();
 
 //setup database
-
 var mongoose = require('mongoose');
-var mongoDB = 'mongodb://joonas-lut:joonas-lut1@ds125680.mlab.com:25680/lut_www';
+
+var mongoDB = 'mongodb://mongo:27017';
 mongoose.connect(mongoDB);
 mongoose.Promise = global.Promise;
 var db = mongoose.connection;
@@ -32,6 +32,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/catalog', catalogRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
